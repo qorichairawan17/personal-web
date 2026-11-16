@@ -1967,6 +1967,22 @@ button {
   height: 100%; /* Guarantees uniform vertical size */
 }
 
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c), transparent 85%);
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
 .project-top {
   display: flex;
   align-items: center;
@@ -2034,11 +2050,17 @@ button {
   color: var(--c);
 }
 
+.project-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .project-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: auto; /* Pushes stack pills to bottom for perfect alignment */
 }
 
 .project-stack li {
@@ -2049,6 +2071,42 @@ button {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--chip-text);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.62rem 1rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 32%, transparent);
+  color: var(--c);
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s var(--ease-out),
+    color 0.25s ease;
+}
+
+.project-link i {
+  font-size: 0.8rem;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.project-link:hover {
+  background: var(--c);
+  border-color: var(--c);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.project-link:hover i {
+  transform: translate(2px, -2px);
 }
 
 /* ==========================================================================
